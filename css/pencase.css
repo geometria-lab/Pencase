@@ -1,0 +1,800 @@
+.pencaseBox{
+    width:535px;
+    font-family:Arial;
+    position:relative;
+    margin-left:-20px;
+    text-align:left;
+    //background:url('target:blank');    
+}
+
+/* disable popup */
+.pencaseBox .pencase-disableBox {
+    position:absolute;
+    width:100%;
+    height:100%;
+    z-index:1000;
+    display:none;
+}
+.pencase-disable{
+    opacity:0.7;
+    filter:progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+}
+.pencase-disable .pencase-disableBox {
+    display:block;
+}
+
+
+/* End disable popup */
+
+.pencaseBox .pencase-content{
+    padding:10px 0 ;
+}
+
+.pencaseBox form {
+    margin:0;
+}
+
+.pencaseBox .pencase-block {
+    position:relative;
+    padding:0 0 0 20px;
+}
+
+.pencaseBox .pencase-block-box{
+    padding:10px 17px 15px 17px;
+    background: #eee;
+    overflow:hidden;
+}
+
+/*.pencaseBox .pencase-block-images .pencase-block-box{*/
+    /*overflow:visible;*/
+/*}*/
+
+/*.pencaseBox .pencase-block-images .pencase-block-box, .pencaseBox .pencase-block-video .pencase-block-box{*/
+    /*padding-right:0;*/
+/*}*/
+
+.pencaseBox .pencase-corner {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius:5px;
+    position:relative;
+}
+
+.pencaseBox .pencase-corner .pencase-controls{
+    -moz-border-radius: 0 5px 5px 0;
+    -webkit-border-radius: 0 5px 5px 0;
+    border-radius:0 5px 5px 0;
+}
+
+/*ie corners*/
+.pencaseBox .pencase-corner .corn{
+    display:block;
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:url('../img/pencase/corners.gif') no-repeat;
+}
+
+.pencaseBox .pencase-corner .lt_corn{
+    left:0;
+    top:0;
+    background-position: left top;
+}
+
+.pencaseBox .pencase-corner .rt_corn{
+    right:0;
+    top:0;
+    background-position: right top;
+}
+
+.pencaseBox .pencase-corner .lb_corn{
+    left:0;
+    bottom:0;
+     background-position: left bottom;
+}
+
+.pencaseBox .pencase-corner .rb_corn{
+    right:0;
+    bottom:0;
+    background-position: right bottom;
+}
+
+
+.pencaseBox .pencase-block-box-wrap{
+    padding:10px 0;
+}
+
+
+.pencaseBox .pencase-block-box STRONG{
+    font-size:14px;
+    padding:0 0 0 3px;
+    display:block;
+    text-transform:capitalize;
+}
+.pencaseBox .pencase-block-box .pencase-textPreviewBox STRONG{
+    text-transform:none;
+}
+.pencaseBox .pencase-insert {
+    display:none;
+}
+
+/*sort placeholder*/
+.pencaseBox .ui-sortable-placeholder{
+    /*background:#B1C3C4;*/
+    /*visibility:visible !important;*/
+    //border:1px solid transparent;
+}
+
+/*.pencaseBox .pencase-block.ui-sortable-placeholder{*/
+    /*background:#B1C3C4;*/
+/*}*/
+
+.pencaseBox .pencase-block.ui-sortable-placeholder .pencase-sortDirect-count{
+    visibility:visible !important;
+}
+
+.pencaseBox .pencase-block.ui-sortable-placeholder .pencase-insert{
+    visibility:visible !important;
+}
+  /*audio*/
+.pencaseBox .pencase-block-audio-box .ui-sortable-placeholder{
+    visibility:hidden !important;
+}
+
+
+/*sort helper*/
+.pencaseBox .pencase-block.ui-sortable-helper{}
+.pencaseBox .pencase-block.ui-sortable-helper .pencase-insert{
+    visibility:visible !important;
+}
+.pencaseBox .pencase-block.ui-sortable-helper .pencase-remove{
+    visibility:hidden !important;
+}
+
+.pencaseBox .pencase-block.ui-sortable-helper .pencase-drag{
+    background-position:-50px -2px;
+}
+.pencaseBox .pencase-block.ui-sortable-helper .pencase-moveup,
+.pencaseBox .pencase-block.ui-sortable-helper .pencase-movedown{
+    visibility: visible !important;
+}
+
+.pencaseBox .pencase-block.ui-sortable-helper .pencase-moveup{
+    background-position:-5px -1px !important;
+}
+.pencaseBox .pencase-block.ui-sortable-helper .pencase-movedown{
+    background-position:-5px -22px !important;
+}
+
+.pencaseBox .pencase-block.ui-sortable-helper .pencase-sortDirect-count{
+    visibility:visible;
+}
+
+.pencaseBox .pencase-block.ui-sortable-placeholder EMBED,
+.pencaseBox .pencase-block.ui-sortable-helper EMBED{
+    visibility:hidden !important;
+}
+
+
+
+/* controll panel */
+.pencaseBox .pencase-controls-box {
+    text-align:center;
+    padding-left:20px;
+    font-size:0;
+    padding-top:1px;
+}
+.pencaseBox .pencase-controls-count{
+    text-align:left;
+    background: none repeat scroll 0 0 #538583;
+    color: #fff;
+    display:block;
+    padding:0;
+    overflow:hidden;
+    width:325px;
+    max-width:100%;
+    margin:auto;
+    position:relative;
+}
+
+.pencaseBox .pencase-controls-count EM {
+    display:block;
+    padding:10px 1px 0 10px;
+    float:left;
+    font-size:12px;
+    font-style:normal;
+}
+
+.pencaseBox .pencase-controls {
+    float:right;
+    padding:3px 2px 4px 2px;
+    background: none repeat scroll 0 0 #2E575B;
+}
+.pencaseBox .pencase-controls .pencase-create{
+    color:#bdc3c5;
+    padding:14px 1px 3px 1px;
+    margin:0 6px;
+    display:block;
+    float:left;
+    font-size:11px;
+    line-height:5px;
+    cursor:pointer;
+    position:relative;
+}
+.pencaseBox .pencase-controls .pencase-create:hover{
+    color:#fff;
+}
+.pencaseBox .pencase-create B, .pencaseBox .pencase-create I{
+    display:block;
+    width:13px;
+    height:14px;
+}
+
+.pencaseBox .pencase-create B{
+    position:absolute;
+    top: 2px;
+    left:50%;
+}
+
+.pencaseBox .pencase-create I{
+    background:url('../img/dirIconsBig.png') no-repeat;
+    background-position:-6px -4px;
+    position:absolute;
+    right:50%;
+}
+
+.pencaseBox .pencase-plugin-header I {
+    /*background-position:-4px -15px;*/
+    background-position:-6px -4px;
+}
+.pencaseBox .pencase-plugin-header:hover I {
+    /*background-position:-4px -2px;*/
+    background-position:-6px -26px;
+}
+
+.pencaseBox .pencase-plugin-text I {
+    background-position:-28px -4px;
+}
+.pencaseBox .pencase-plugin-text:hover I {
+    background-position:-28px -26px;
+}
+
+.pencaseBox .pencase-plugin-images I {
+    background-position:-53px -4px;
+}
+.pencaseBox .pencase-plugin-images:hover I {
+    background-position:-53px -26px;
+}
+
+.pencaseBox .pencase-plugin-video I, .pencaseBox .pencase-plugin-addVideo I {
+    background-position:-76px -4px;
+}
+.pencaseBox .pencase-plugin-video:hover I, .pencaseBox .pencase-plugin-addVideo:hover I {
+    background-position:-76px -26px;
+}
+
+.pencaseBox .pencase-plugin-audio I {
+    background-position:-96px -4px;
+}
+.pencaseBox .pencase-plugin-audio:hover I {
+    background-position:-96px -26px;
+}
+
+/* sort panel */
+.pencaseBox .pencase-sortDirect, .pencaseBox .pencase-sortDirect-count{
+    width:16px;
+    height:58px;
+}
+.pencaseBox .pencase-sortDirect{
+    position:absolute;
+    top: 50%;
+    left: 0px;
+}
+
+.pencaseBox .pencase-sortDirect-count{
+    position:relative;
+    overflow:hidden;
+    margin-top:-29px;
+    /*visibility:hidden;*/
+}
+
+.pencaseBox .pencase-block:hover .pencase-sortDirect-count {
+    visibility:visible;
+}
+
+.pencaseBox .pencase-sortDirect I {
+    display:block;
+    float:left;
+    width:100%;
+    overflow:hidden;
+    height:20px;
+    background:url('../img/icons.png') no-repeat;
+}
+
+.pencaseBox .pencase-sortDirect .pencase-moveup, .pencaseBox .pencase-sortDirect .pencase-movedown{
+    cursor:pointer;
+}
+.pencaseBox .pencase-sortDirect .pencase-moveup{
+    background-position:-5px -1px;
+}
+.pencaseBox .pencase-sortDirect .pencase-moveup:hover{
+    background-position:-27px -1px;
+}
+
+.pencaseBox .pencase-sortDirect .pencase-movedown{
+    background-position:-5px -22px;
+}
+.pencaseBox .pencase-sortDirect .pencase-movedown:hover{
+    background-position:-27px -22px;
+}
+
+.pencaseBox .pencase-sortDirect .pencase-drag{
+    background-position:-50px -20px;
+    cursor:move;
+}
+
+.pencaseBox .pencase-sortDirect .pencase-drag:hover{
+    background-position:-50px -2px;
+}
+
+.pencaseBox .pencase-block-dragging .pencase-sortDirect-count{
+    visibility:visible;
+}
+
+.pencaseBox .pencase-remove{
+    position:absolute;
+    width:17px;
+    height:17px;
+    top:18px;
+    right:9px;
+    background:url('../img/icons.png') no-repeat -1px -46px;
+    cursor:pointer;
+    z-index:1000;
+    display:none;
+}
+
+.pencaseBox .pencase-block:hover .pencase-remove{
+    display:block;
+}
+
+.pencaseBox .pencase-remove:hover{
+    background-position:-17px -46px;
+}
+
+
+/*CONTENT*/
+.pencaseBox TEXTAREA {
+    height:1.28em;
+    overflow:hidden;
+    width:99%;
+    margin:0;
+    font-size:1.2em;
+}
+/*header*/
+.pencaseBox .pencase-header-select {
+    overflow:hidden;
+    padding: 5px 0 0 0;
+    float:left;
+}
+.pencaseBox .pencase-header-select I{
+    display:block;
+    float:left;
+    padding:0.5em 0.15em 0.2em 0.2em;
+    margin:0 12px 0 0;
+    cursor:pointer;
+    color:#bdc3c4;
+    font-style:normal;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius:4px;
+
+}
+
+.pencaseBox .pencase-header-select .pencase-current{
+    background:#718183;
+    color:#fff;
+}
+
+.pencaseBox .pencase-header-select I:hover{
+    color:#fff;
+}
+
+
+.pencaseBox .pencase-header-select .pencase-header-select-big{
+    font-size:18px;
+    height:20px;
+    padding:4px 1px 4px 4px;
+}
+
+.pencaseBox .pencase-header-select .pencase-header-select-normal{
+    font-size:14px;
+    margin-top:2px;
+    padding:3px 3px 3px 3px;
+}
+
+.pencaseBox .pencase-header-select .pencase-header-select-small{
+    font-size:10px;
+    margin-top:4px;
+    padding:3px 3px 2px 4px;
+}
+
+.pencaseBox .pencase-block-header-box{
+    position:relative;
+    float:right;
+    //float:none;
+}
+
+.pencaseBox .pencase-block-header-box LABEL{
+    margin:0;
+    padding:0;
+    position:absolute;
+    left:0.25em;
+    top:0.6em;
+    color:#718183;
+}
+
+.pencaseBox .pencase-block-header-box INPUT{
+    width:367px;
+    margin:3px 0 0 0;
+    //padding-bottom:0;
+}
+
+/*text*/
+
+.pencaseBox .pencase-block-text-box{
+    position:relative;
+    width:100%;
+    margin:5px 0 7px 0;
+    /*height:2.7em;*/
+    min-height:3.7em;
+}
+.pencaseBox .pencase-block-text-box .pencase-simpleText-area{
+    /*height:2.28em;*/
+    min-height:3.28em;
+    /*max-height:25em;*/
+    padding:3px;
+    width:98%;
+}
+
+
+
+.pencaseBox .pencase-block-text-box LABEL{
+    margin:0;
+    padding:0;
+    position:absolute;
+    left:6px;
+    top:2px;
+    color:#718183;
+}
+
+.pencaseBox .pencase-block-text-box TEXTAREA, .pencaseBox .pencase-block-text-box LABEL{
+    font-size:14px;    
+}
+
+/* nicEdit HTML text*/
+.pencaseBox .pencase-block-htmlbox-box{
+    font-size: 0.9em;
+    border:1px solid #718183;
+    color:#BFC5C4;
+    width:99%;
+    margin:4px 0 2px 0;
+    border-radius: 4px 4px;
+    -webkit-border-radius: 4px 4px;
+    -moz-border-radius: 4px 4px;
+}
+
+.pencaseBox .pencase-block-htmlbox-box .nicEdit-button-wrap{
+    /*background:none !important;*/
+    border:none !important;
+}
+
+.pencaseBox .pencase-block-htmlbox-box .nicEdit-panelContain {
+    background: #538583 !important;
+    padding:3px 0;
+    border-top:none !important;
+}
+
+.pencaseBox .pencase-block-htmlbox-box .pancase-nicEdit-area {
+    background: #fff;
+    color: #000;
+    border-bottom:none !important;
+}
+
+
+.pencaseBox .pencase-block-htmlbox-box DIV{
+    border-right:none !important;
+    border-left:none !important;
+}
+
+.pencaseBox .pencase-block-htmlbox-box TEXTAREA{
+    width:100%;
+}
+.pencaseBox .pencase-block-htmlbox-box TEXTAREA{
+    height:1.2em;
+    height:4.6em;
+    border:none;
+    border-radius:none;
+    -webkit-border-radius:none;
+    -moz-border-radius:none;
+}
+
+.pencaseBox .nicEdit-panel > DIV{
+    margin: 1px 5px;
+}
+
+.pencaseBox .nicEdit-empty{
+    color:#718183;
+}
+
+
+/* Image */
+.pencaseBox .pencase-block-image-box LABEL{
+    font-size:0.8em;
+    margin:0;
+    padding:4px 4px 4px 0;
+    float:left;
+    width:100%;
+}
+.pencaseBox .default{
+    color:#718183;
+}
+
+.pencaseBox .pencase-block-image-box INPUT {
+    width:80%;
+    min-height:15px;
+    margin-right:10px;
+}
+
+.pencaseBox .pencase-block-image-form{
+    vertical-align:middle;
+    margin-top:4px;
+}
+
+
+.pencaseBox .pencase-block-image-box .error {
+    font-family: Areal;
+    padding:0.2em 0.4em 0 0.4em;
+    margin:5px 0 0 0;
+}
+
+
+
+/*Video*/
+.pencaseBox .pencase-block-video-box LABEL{
+    font-size:0.8em;
+    margin:0;
+    padding:4px 4px 4px 0;
+    float:left;
+    width:100%;
+}
+.pencaseBox .default{
+    color:#718183;
+}
+
+.pencaseBox .pencase-block-video-box INPUT {
+    width:80%;
+    min-height:15px;
+    margin-right:10px;
+}
+
+.pencaseBox .pencase-block-video-form{
+    vertical-align:middle;
+    margin-top:4px;
+}
+
+.pencaseBox .pencase-block-video-player{
+    background:url('../img/insertVideoBg.png') no-repeat transparent center center;
+    padding-top:6px;
+}
+
+.pencaseBox .pencase-block-video-player EMBED{
+    background:transparent;
+    width:480px !important;
+}
+
+.pencaseBox .pencase-block-video-box .error {
+    font-family: Areal;
+    padding:0.2em 0.4em 0 0.4em;
+    margin:5px 0 0 0;
+}
+
+.pencaseBox .pencase-block-video-box BR {
+    display:none;
+}
+
+
+
+/* errors */
+
+.pencaseBox .error{
+    padding:0;
+    font-size:0.8em;
+    color:red;
+}
+.pencaseBox .pencase-errorBox{
+    overflow: hidden;
+    padding-top:10px;
+    display:none;
+}
+
+#submit-element .error{
+    display:block;
+    display:none;
+    margin-top:10px;
+}
+
+
+
+/* Markdown text */
+
+.pencaseBox .pencase-block-markDown TEXTAREA{
+    min-height:45px;
+}
+.pencaseBox .pencase-block-text-editor{
+    border:1px solid #718183;
+    padding:0 0 3px 0;
+    margin:4px 0 2px 0;
+    background: #fff;
+    width: 99%;
+}
+.pencase-block-text-editor .pencase-block-text-box{
+    margin:0;
+    width:auto;
+    font-size:1.1em;
+    /*max-height:31em;*/
+    max-height:350px;
+    padding:4px 4px 5px 6px;
+
+    /*overflow:auto;*/
+}
+.pencase-block-text-editor TEXTAREA {
+    margin:0;
+    border:none;
+    width:98%;
+    font-size:1em;
+    padding-top:0;
+    padding-bottom:0;
+    max-height:350px;
+    overflow:auto;
+}
+
+.pencase-block-text-butBox {
+    padding:4px 5px;
+    overflow:hidden;
+    background: none repeat scroll 0 0 #538583;
+    -moz-border-radius: 3px 3px 0 0;
+    -webkit-border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.pencase-block-text-butBox .but{
+    background:url("../img/iconsText.png") no-repeat scroll 0 0 transparent;
+}
+.pencaseBox .pencase-block-text-butBox .but {
+    display:block;
+    float:left;
+    width:20px;
+    height:20px;
+    margin-right:5px;
+    cursor:pointer;
+    border:1px solid transparent;
+    text-align:center;
+    padding:0;
+    position:inherit;
+    left:0;
+}
+.pencaseBox .pencase-block-text-butBox .but:hover{
+    border-color:#fff;
+}
+
+.pencaseBox .pencase-block-text-butBox .pencase-seporator{
+    width:1px;
+    border-right-color:#1F3A3C;
+    background:none;
+    margin-right:6px;
+}
+.pencaseBox .pencase-block-text-butBox .pencase-seporator:hover{
+    border-color:transparent;
+    border-right-color:#718183;
+}
+
+.pencase-block-text-butBox SPAN {
+    display:block;
+    float:left;
+    width:0px;
+    overflow:hidden;
+    border-right:1px solid #213638;
+    height:21px;
+    margin:0 5px 0 0;
+}
+
+.pencase-block-text-butBox .pencase-strong{
+    background-position:4px 2px;
+}
+.pencase-block-text-butBox .pencase-em{
+    background-position:-15px 2px;
+}
+.pencase-block-text-butBox .pencase-ins{
+    background-position:-36px 2px;
+}
+.pencase-block-text-butBox .pencase-link{
+    background-position:-95px 2px;
+}
+.pencase-block-text-butBox .pencase-ul{
+    background-position:-55px 2px;
+}
+.pencase-block-text-butBox .pencase-ol{
+    background-position:-75px 2px;
+}
+
+.pencase-block-text-butBox .pencase-undo{
+    background-position:-175px 2px;
+}
+.pencase-block-text-butBox .pencase-redo{
+    background-position:-195px 2px;
+}
+
+.pencaseBox .pencase-block-text-butBox .pencase-help{
+    float:right;
+    background-position:-155px 2px;
+}
+
+    /* preview */
+
+.pencaseBox .pencase-textPreviewBox{
+    margin:10px 0 0 0;
+}
+.pencaseBox .pencase-textPreviewWrap{
+    padding:5px 4px 8px 6px;
+    margin:5px 0 0 0;
+    border:1px dashed #718183;
+    background: #fff;
+}
+.pencaseBox .pencase-textPreview {
+    overflow:auto;
+    max-height:350px;
+    font-size:0.8em;
+    /*white-space:pre-wrap;*/
+}
+
+.pencaseBox .pencase-textPreview P {
+    padding:0;
+    margin:0 0 1em 0;
+}
+
+.pencaseBox .pencase-textPreview STRONG {
+    display:inline;
+    font-size:1em;
+    padding:0;
+}
+
+.pencaseBox .pencase-textPreview UL, .pencaseBox .pencase-textPreview OL {
+    padding:0 0 0 0.5em;
+    margin:0 0 1em 0;
+    list-style-position:inside;
+}
+
+.pencaseBox .pencase-textPreview UL OL, .pencaseBox .pencase-textPreview UL UL, .pencaseBox .pencase-textPreview OL OL, .pencaseBox .pencase-textPreview OL UL {
+    font-size: 1em;
+}
+
+.pencaseBox .pencase-textPreview LI {
+    margin:0;
+    padding:0;
+}
+.pencaseBox .pencase-textPreview LI P {
+    margin:0;
+    padding:0;
+    display:inline;
+}
+
+.pencaseBox .pencase-textPreview OL, .pencaseBox .pencase-textPreview OL LI {
+    list-style-type:decimal;
+}
+
+.pencaseBox .pencase-textPreview UL, .pencaseBox .pencase-textPreview UL LI {
+    list-style-type:disc;
+}
+    /* End preview */
+
+/* End Markdown text */
