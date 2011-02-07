@@ -72,7 +72,7 @@
     position:absolute;
     width:5px;
     height:5px;
-    background:url('../img/pencase/corners.gif') no-repeat;
+    background:url('../img/corners.gif') no-repeat;
 }
 
 .pencaseBox .pencase-corner .lt_corn{
@@ -454,6 +454,7 @@
     /*max-height:25em;*/
     padding:3px;
     width:98%;
+    /*overflow:auto;*/
 }
 
 
@@ -609,7 +610,7 @@
 
 .pencaseBox .pencase-block-video-box .error {
     font-family: Areal;
-    padding:0.2em 0.4em 0 0.4em;
+    padding:0.2em 0.4em 0 0;
     margin:5px 0 0 0;
 }
 
@@ -644,6 +645,7 @@
 
 .pencaseBox .pencase-block-markDown TEXTAREA{
     min-height:45px;
+    //background: none !important;
 }
 .pencaseBox .pencase-block-text-editor{
     border:1px solid #718183;

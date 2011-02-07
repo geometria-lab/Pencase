@@ -1,6 +1,6 @@
 
 
-function simpleEditor(el){
+function markdownEditor(el){
     var obj = this;
     this.el = el;
     // history
@@ -22,7 +22,7 @@ function simpleEditor(el){
     obj.isDosTextSet();
 }
 
-simpleEditor.prototype = {
+markdownEditor.prototype = {
     // history
     history: function(){
         var obj = this,
@@ -416,7 +416,7 @@ simpleEditor.prototype = {
         var obj = this,
             area = obj.el,
             selText =  obj.getSelectedText(),
-            linkText = linkText ? linkText : selText, 
+            linkText = selText ? selText : linkText, 
             prefix = '[',
             linkTitleCode = '',
             label = obj.linkLabel,
@@ -467,7 +467,6 @@ simpleEditor.prototype = {
                 obj.insertText(testObj.anchor, testObj.start, testObj.end);
                 obj.setSelection(testObj.start, testObj.start + testObj.anchor.length);
             }
-            obj.setSelection(testObj.urlStart, testObj.urlEnd);
         }
         function inAnchor(){
             obj.setSelection(testObj.anchorStart, testObj.anchorEnd);
@@ -499,13 +498,6 @@ simpleEditor.prototype = {
     },
 
     // END LINK
-
-
-
-
-
-
-
 
     // list
     listLabel: 'list item',

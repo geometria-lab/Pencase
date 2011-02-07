@@ -1,22 +1,11 @@
 jQuery.fn.pencase = function(user_options) {
     var $ = jQuery,
         pencil = jQuery.fn.pencase,
-        obj = this,
         options = $.extend({
-            // Defaults
-            // texts
-            create_text : 'Add',
-            //submit_text : 'Save',
-            //empty_text : pencil.words['noSaveData'],
-            // box
             controls_wrap : '<div class="pencase-controls-box"><div class="pencase-controls-count pencase-corner"><em>'+ pencil.words["insert"] + '</em>{content}</div></div>',
-            //plugins
             allowEmpty: false,
-            //plugins : null,
-            // init data from json
             value : null,
             mobile : false
-            //defaulFields: null
         }, user_options),
 
         titles = {
@@ -27,7 +16,7 @@ jQuery.fn.pencase = function(user_options) {
         },
         // templates, will be cloned later
         elements = {
-            create : $('<span class="pencase-create" />').text(options.create_text),
+            create : $('<span class="pencase-create" />'),
             remove : $('<i title="'+ titles.remove +'" class="pencase-remove" />'),
             moveup : $('<i title="'+ titles.up +'" class="pencase-moveup" />'),
             movedown : $('<i title="'+ titles.down +'" class="pencase-movedown" />'),
@@ -39,14 +28,8 @@ jQuery.fn.pencase = function(user_options) {
             contentBlockWrap: $('<div class="pencase-block-box-wrap"/>'),
             contentBlock : $('<div class="pencase-block-box pencase-corner"/>'),
             drag : $('<i title="'+ titles.drag +'" class="pencase-drag"/>'),
-            submit : $('<div class="pencase-submit"/>'),
-            //submitBut : $('<span class="submit"/>').text(options.submit_text),
             errorBox : $('<div class="pencase-error"/>')
         };
-
-    //options.value = '[{"type":"header","value":{"size":1,"text":"11111111"}},{"type":"text","value":"22222222222"},{"type":"markDown","value":"333333333333\u000a\u000a- list item"},{"type":"nicEdit","value":"44<span style=\\"font-weight: bold;\\">444444444</span>44444"},{"type":"video","value":"http://www.youtube.com/v/WTCBw3wJqkE"},{"type":"image","value":{"src":"http://www.phototonus.ru/w_files/original_images/p0000180.jpg","description":"wwwwwww"}}]';
-    //options.allowEmpty = true;
-
 
     // test mobile browsers
     function mobileTest(){
@@ -93,8 +76,6 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
     this.blocksBox = obj.el.blocksBox.clone().appendTo(obj.mainBox);
     this.controlsBox = ( options.controls_wrap ? $(options.controls_wrap.replace('{content}', controls_html)) : $(controls_html) );
     this.controls = $(".pencase-controls", obj.controlsBox).length ? $(".pencase-controls", obj.controlsBox) : obj.controlsBox;
-    this.submitBox = obj.el.submit.clone().appendTo(el);
-    //this.submitBut = obj.el.submitBut.clone().appendTo(obj.submitBox);
     this.errorBox = obj.el.errorBox.clone().hide().appendTo(obj.mainBox);
     this.startValues = null;
 
@@ -121,16 +102,6 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
             if(!pluginObj || pluginObj.hidden  && !value){
                 return;
             }
-
-//            if( options.defaulFields && $.inArray(plugin, options.defaulFields) == -1 ){ return; } // for disable plugins
-//
-//            // show default block
-//            if(value){
-//                obj.createBlock(plugin, value);
-//            }else if(pluginObj.isDefault || $.inArray(plugin, options.defaulFields) != -1 ){
-//                obj.createBlock(plugin);
-//            }
-
             // show block
             return obj.createBlock(plugin, value);
         }
@@ -147,7 +118,7 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
             }
 
             var create_link = obj.el.create.clone()
-                .html('<b><i/></b><br clear="both"/>'+ label)
+                .html('<b><i/></b><br clear="all"/>'+ label)
                 .addClass('pencase-plugin-' + plugin);
             create_link.appendTo( obj.controls )
                 .click(function() {
@@ -448,8 +419,6 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
             }
         });
 
-    obj.submitBox.remove(); // remove default submit box
-
     // Public Methods
     var areaEl = el.get(0);
     areaEl.updateData = function(){ obj.submit();}
@@ -464,13 +433,8 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
     },
 
     obj.form.submit(function(e){
-        obj.inSubmit = true;
         obj.disable();
         obj.submit(e);
-        setTimeout(function(){
-            obj.inSubmit = false;
-        }, 2000);
-        //return false;
     });
 
     function getValue(plugin, box){
@@ -501,6 +465,7 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
         return data;
     };
 
+    this.inSubmit = false;    
     this.submit = function(e){
         var bocks = $('div.pencase-block', obj.blocksBox),
             data = obj.getEditorData(), // GET DATA
@@ -517,6 +482,7 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
                 e.preventDefault();
                 e.stopPropagation();
                 obj.undisable();
+                obj.inSubmit = false;
             }
         }
 
@@ -554,12 +520,6 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
             }
         });
 
-
-//        stopSubmit();
-//
-//        alert($.toJSON(data) || '');
-
-
         if(errorFlag){
             stopSubmit();
             scrollOnError(firstErrorField);
@@ -568,17 +528,15 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
             if(data.length){
                 var JSONStr = $.toJSON(data) || '';
                 el.val(JSONStr);
-                alert(JSONStr);
-                //console.warn(JSONStr); stopSubmit();
             } else{
                 el.val('');
             }
+            obj.inSubmit = true;
         }
     }
     // end save
 
     // confirm escape
-    this.inSubmit = false;
     this.confirmEscape = function(){
         $(window).bind('beforeunload', confirmExit);
         function confirmExit(event){

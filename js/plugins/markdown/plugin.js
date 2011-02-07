@@ -10,12 +10,6 @@ jQuery.fn.pencase.pluginMarkdownWords = {
     linkHref: "http://example.ru/",
     linkTitle: "Title",
     listItem: "list item"
-//    // link add popUp
-//    popLink : 'Link', //Ссылка
-//    popText : 'Text',//Текст
-//    popInsert : 'Insert',//Вставить
-//    popCancel : 'Cancel'//Отменить
-
 }
 
 
@@ -53,7 +47,7 @@ jQuery.fn.pencase.plugins.markDown = {
             preview = $('<div class="pencase-textPreview"/>').appendTo(previewWrap),
             ereaEl = area.get(0),
             words = jQuery.fn.pencase.pluginMarkdownWords,
-            editor = new simpleEditor(ereaEl),
+            editor = new markdownEditor(ereaEl),
             parser = new markdownConverter(),
             buttons = [
                 {
@@ -72,7 +66,6 @@ jQuery.fn.pencase.plugins.markDown = {
                     className : 'pencase-link',
                     action: function(){
                         editor.createLink(words['linkHref'], words['linkText']);
-                        //createPopUpLink();
                     }
                 },
                 { className : 'pencase-seporator' },
@@ -109,8 +102,6 @@ jQuery.fn.pencase.plugins.markDown = {
 
         for(var x = 0, l = buttons.length; x < l; x++){
             var obj = buttons[x],
-//                but = $('<img/>').addClass(obj.className); // tag img important for focus in area in IE
-//                if($.browser.msie){ but.attr('src', 'img/e.gif"'); }
                 but = $('<div class="but"/>').addClass(obj.className);
 
             (function(x) {
@@ -123,6 +114,7 @@ jQuery.fn.pencase.plugins.markDown = {
                     }
                     updateSize();
                     updatePreview();
+                    if($.browser.msie){ e.cancelBubble(); } // Important for focus in area in IE 
                 });
             })(x);
             butBox.append(but);
@@ -130,34 +122,13 @@ jQuery.fn.pencase.plugins.markDown = {
 
         el.append(mainBox).append(previewBox);
 
-        // help popUp
-        var showHelpHtml;
-        function showHelp(){
-            function showPopUp(html){
-                Popups.showPopup(html, function(){
-                    $('.closeHelp', Popups.Pc).click(function(){
-                        Popups.closePopup();
-                    });
-                }, 500);
-            }
-            if(showHelpHtml){
-                showPopUp(showHelpHtml);
-            } else {
-                $.get('/j/plugins/pencase/help.html', function(data){
-                    if( data && data.length > 1000){
-                        showPopUp(data);
-                        showHelpHtml = data;
-                    }
-                });
-            }
-        }
-
         function updateSize(){
-            area.css('height', '0');
-            var fontHeight = parseInt(area.css('font-size')),
-                height = parseInt(ereaEl.scrollHeight) + fontHeight+6;
-            box.css('height', height  +'px');
-            area.css('height', height +'px');
+            if(!$.browser.msie){
+                area.css('height', 'auto');
+            }
+            var height = parseInt( ereaEl.scrollHeight ) + 20 ;
+            box.css('height', (height + 5) +'px');
+            area.css('height', height +'px');            
         }
 
         function testString(str, symbols){
@@ -269,7 +240,6 @@ jQuery.fn.pencase.plugins.markDown = {
         //  set values
         if(blockObj.value){
             this.setValues(blockObj.value, area, label, updatePreview);
-            //editor.store[0] = blockObj.value;
         }
     }
 }

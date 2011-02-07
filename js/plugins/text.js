@@ -29,11 +29,14 @@ jQuery.fn.pencase.plugins.text = {
             label = $('<label for="">'+ text +'</label>').appendTo(box),
             area = $('<textarea class ="pencase-simpleText-area"/>').appendTo(box),
             ereaEl = area.get(0);
+            //areaClone = $('<textarea/>').css('height', '0').append('body');
         el.append(box);
 
         function updateSize(){
-            area.css('height', '0');
-            var height = parseInt(ereaEl.scrollHeight) + parseInt(area.css('font-size'));
+            if(!$.browser.msie){
+                area.css('height', 'auto');
+            }            
+            var height = parseInt( ereaEl.scrollHeight ) + 20 ;
             box.css('height', (height + 5) +'px');
             area.css('height', height +'px');
         }
@@ -53,6 +56,9 @@ jQuery.fn.pencase.plugins.text = {
                 updateSize();
             })
             .keyup(function(){
+                updateSize();
+            })
+            .keypress(function(){
                 updateSize();
             });
 

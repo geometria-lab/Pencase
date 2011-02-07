@@ -50,13 +50,16 @@
 <body>
     <center>
         <form action="">
-            <textarea>fff</textarea>
+            <textarea></textarea>
             <br/>
             <button type="submit">Отправить</button>
         </form>
     </center>
     <script type="text/javascript">
         $('textarea').pencase();
+        $('form').eq(0).submit(function(){
+            alert( $('textarea').eq(0).val() );
+        });
     </script>
 </body>
 </html>

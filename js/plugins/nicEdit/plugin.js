@@ -32,6 +32,10 @@ jQuery.fn.pencase.plugins.nicEdit = {
 
         var editor;
         function initEditor(){
+            if($.browser.msie){
+                area.css('width', ( area.innerWidth() - 2 ) + 'px' );
+                area.css('height', area.innerHeight() + 'px' ); 
+            }
             editor = new nicEditor({
                 iconsPath : 'img/nicEditorIcons.gif',
                 //buttonList : ['bold','italic','underline', 'link', 'ol','ul'],
