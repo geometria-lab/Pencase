@@ -252,17 +252,17 @@
     background-position:-6px -26px;
 }
 
-.pencaseBox .pencase-plugin-text I {
+.pencaseBox .pencase-plugin-text I, .pencaseBox .pencase-plugin-markDown I, .pencaseBox .pencase-plugin-nicEdit I {
     background-position:-28px -4px;
 }
-.pencaseBox .pencase-plugin-text:hover I {
+.pencaseBox .pencase-plugin-text:hover I, .pencaseBox .pencase-plugin-markDown:hover I, .pencaseBox .pencase-plugin-nicEdit:hover I {
     background-position:-28px -26px;
 }
 
-.pencaseBox .pencase-plugin-images I {
+.pencaseBox .pencase-plugin-image I {
     background-position:-53px -4px;
 }
-.pencaseBox .pencase-plugin-images:hover I {
+.pencaseBox .pencase-plugin-image:hover I {
     background-position:-53px -26px;
 }
 
@@ -528,6 +528,12 @@
 
 
 /* Image */
+
+.pencaseBox .pencase-block-image-form{
+    vertical-align:middle;
+    margin-top:4px;
+}
+
 .pencaseBox .pencase-block-image-box LABEL{
     font-size:0.8em;
     margin:0;
@@ -545,25 +551,34 @@
     margin-right:10px;
 }
 
-.pencaseBox .pencase-block-image-form{
-    vertical-align:middle;
-    margin-top:4px;
-}
-
-
 .pencaseBox .pencase-block-image-box .error {
     font-family: Areal;
-    padding:0.2em 0.4em 0 0.4em;
+    padding:0.2em 0.4em 0 0;
     margin:5px 0 0 0;
 }
 
+.pencaseBox .pencase-image-picBox{
+    text-align:center;
+    overflow: hidden;
+    margin-right:2px;
+}
+
+.pencaseBox .pencase-image-picBox IMG {
+    margin:0 auto;
+    max-width:100%;
+}
+
+.pencaseBox .pencase-block-image-box .pencase-image-picBox INPUT {
+    margin:10px auto 0 auto;
+    width:98%;
+}
 
 
 /*Video*/
 .pencaseBox .pencase-block-video-box LABEL{
     font-size:0.8em;
     margin:0;
-    padding:4px 4px 4px 0;
+    padding:4px 4px 0 0;
     float:left;
     width:100%;
 }
