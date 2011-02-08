@@ -406,13 +406,6 @@ jQuery.fn.pencase.EditorObj = function(el, options, elements) {
                 obj.inSortable = false;
                 ui.item.attr('style', '');
                 obj.hideLinks();
-                if($.browser.msie){
-                    setTimeout(function(){
-                        var ieElFix = $('<div/>');
-                        $('div.pencase-content', obj.mainBox).append(ieElFix);
-                        ieElFix.remove();
-                    }, 100);
-                }
             },
             change: function(e, ui) {
                 obj.hideLinks();

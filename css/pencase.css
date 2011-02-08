@@ -4,8 +4,10 @@
     position:relative;
     margin-left:-20px;
     text-align:left;
-    //background:url('target:blank');    
+    //background:url('target:blank');
 }
+
+.pencaseBox  * { //zoom:1; } // for ie
 
 /* disable popup */
 .pencaseBox .pencase-disableBox {
@@ -73,6 +75,7 @@
     width:5px;
     height:5px;
     background:url('../img/corners.gif') no-repeat;
+	font-size:0;
 }
 
 .pencaseBox .pencase-corner .lt_corn{
@@ -85,18 +88,24 @@
     right:0;
     top:0;
     background-position: right top;
+	-left: 100%;
+	-right: 5px;
 }
 
 .pencaseBox .pencase-corner .lb_corn{
     left:0;
     bottom:0;
-     background-position: left bottom;
+    background-position: left bottom;
+	-bottom: -1px;
+
 }
 
 .pencaseBox .pencase-corner .rb_corn{
     right:0;
     bottom:0;
     background-position: right bottom;
+	-left: 100%;
+	-right: 5px;
 }
 
 
@@ -195,6 +204,8 @@
     max-width:100%;
     margin:auto;
     position:relative;
+	font-size:11px;
+	-width:auto;
 }
 
 .pencaseBox .pencase-controls-count EM {
@@ -237,7 +248,7 @@
 }
 
 .pencaseBox .pencase-create I{
-    background:url('../img/dirIconsBig.png') no-repeat;
+    background:url('../img/dirIconsBig.gif') no-repeat;
     background-position:-6px -4px;
     position:absolute;
     right:50%;
@@ -289,13 +300,15 @@
     position:absolute;
     top: 50%;
     left: 0px;
+	-top: 50%;
+	-z-index: 1000;
 }
 
 .pencaseBox .pencase-sortDirect-count{
     position:relative;
     overflow:hidden;
     margin-top:-29px;
-    /*visibility:hidden;*/
+	-visibility:visible;
 }
 
 .pencaseBox .pencase-block:hover .pencase-sortDirect-count {
@@ -308,7 +321,7 @@
     width:100%;
     overflow:hidden;
     height:20px;
-    background:url('../img/icons.png') no-repeat;
+    background:url('../img/icons.gif') no-repeat;
 }
 
 .pencaseBox .pencase-sortDirect .pencase-moveup, .pencaseBox .pencase-sortDirect .pencase-movedown{
@@ -347,10 +360,11 @@
     height:17px;
     top:18px;
     right:9px;
-    background:url('../img/icons.png') no-repeat -1px -46px;
+    background:url('../img/icons.gif') no-repeat -1px -46px;
     cursor:pointer;
     z-index:1000;
     display:none;
+	-display: block;
 }
 
 .pencaseBox .pencase-block:hover .pencase-remove{
@@ -437,6 +451,7 @@
     width:367px;
     margin:3px 0 0 0;
     //padding-bottom:0;
+	-width:97%;
 }
 
 /*text*/
@@ -469,7 +484,7 @@
 }
 
 .pencaseBox .pencase-block-text-box TEXTAREA, .pencaseBox .pencase-block-text-box LABEL{
-    font-size:14px;    
+    font-size:14px;
 }
 
 /* nicEdit HTML text*/
@@ -505,6 +520,10 @@
 .pencaseBox .pencase-block-htmlbox-box DIV{
     border-right:none !important;
     border-left:none !important;
+}
+
+.pencaseBox .pencase-block-htmlbox-box .nicEdit-buttonContain{
+    -margin:0 5px;    
 }
 
 .pencaseBox .pencase-block-htmlbox-box TEXTAREA{
@@ -567,6 +586,7 @@
 .pencaseBox .pencase-image-picBox IMG {
     margin:0 auto;
     max-width:100%;
+	-width:100%;
 }
 
 .pencaseBox .pencase-block-image-box .pencase-image-picBox INPUT {
@@ -683,9 +703,9 @@
     -webkit-border-radius: 5px 5px 0 0;
     border-radius: 5px 5px 0 0;
 }
-
 .pencase-block-text-butBox .but{
     background:url("../img/iconsText.png") no-repeat scroll 0 0 transparent;
+    -background-image:url("../img/iconsText.gif");
 }
 .pencaseBox .pencase-block-text-butBox .but {
     display:block;
@@ -699,6 +719,7 @@
     padding:0;
     position:inherit;
     left:0;
+    -border-color: #538583;
 }
 .pencaseBox .pencase-block-text-butBox .but:hover{
     border-color:#fff;
@@ -709,10 +730,11 @@
     border-right-color:#1F3A3C;
     background:none;
     margin-right:6px;
+    cursor: default;
 }
 .pencaseBox .pencase-block-text-butBox .pencase-seporator:hover{
     border-color:transparent;
-    border-right-color:#718183;
+    border-right-color:#1F3A3C;    
 }
 
 .pencase-block-text-butBox SPAN {
